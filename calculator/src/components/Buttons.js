@@ -4,10 +4,10 @@ export class Buttons extends Component {
     render() {  
         return (         
          <>
-           <button className="col1 operator" value="+" onClick={this.props.math}>+</button> 
-          <button className="col2 operator" value="-" onClick={this.props.math}>-</button> 
-          <button className="col3 operator" value="*" onClick={this.props.math}>x</button> 
-          <button className="col4 operator" value="/" onClick={this.props.math}>÷</button> 
+           <button className="col1 operator" value="+" onClick={this.props.operator}>+</button> 
+          <button className="col2 operator" value="-" onClick={this.props.operator}>-</button> 
+          <button className="col3 operator" value="*" onClick={this.props.operator}>x</button> 
+          <button className="col4 operator" value="/" onClick={this.props.operator}>÷</button> 
           <button className="col1" value="7" onClick={this.props.handleClick}>7</button> 
           <button className="col2" value="8" onClick={this.props.handleClick}>8</button> 
           <button className="nine" value="9" onClick={this.props.handleClick}>9</button> 

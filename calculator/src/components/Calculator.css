@@ -41,7 +41,6 @@
 
 .zero {
   grid-column: 1/5;
-
 }
 
 .col1 {
@@ -69,7 +68,6 @@ button {
   color: ivory;
   font-size: 16px;
   font-weight: 700;
-  /* z-index: 100; */
 }
 
 button:focus {
