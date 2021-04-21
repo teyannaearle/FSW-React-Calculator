@@ -8,12 +8,15 @@ export class Calculator extends Component {
       super()
       this.state = {
         display: "0" ,
-        history: ""  ,
+        history: "" ,  
+
       }
       this.numberCopy = ""
       this.answer =""
       this.formatter = new Intl.NumberFormat('en')
       this.array = []
+
+
     }  
 
     handleClick = (e) => {
@@ -28,6 +31,7 @@ export class Calculator extends Component {
             this.setState({history: input})
             this.numberCopy = input
         }
+        console.log(this.array)
         
     }
 
@@ -50,19 +54,36 @@ export class Calculator extends Component {
         this.setState({display: "0"})
         this.setState({history: ""})
         this.numberCopy = ""
+        this.setState({prevOp: ""})
+        this.array = []
     }
 
     operator = (e) => {
+    
+      // if (this.array.length === 0) {
+      //   this.array[0] = Number(this.state.history)
+      //   this.array[1] = e.target.value
+      // }
+      // this.numberCopy = ""     
+ 
 
-      if (this.array.length === 0) {
-        this.array[0] = Number(this.state.history)
-        this.array[1] = e.target.value
+
+      if (this.array.length === 0){
+        this.array.push(Number(this.state.history))
+        this.array.push(e.target.value)
+        this.setState({waitingForInput: true})
+
+      } else if (this.array.length === 2){
+        this.calculate()
       }
-      this.numberCopy = ""     
+
+      this.numberCopy = ""
         
     }    
 
     calculate = () => {
+
+
       if (this.array.length === 2){
             this.array.push(Number(this.state.history))
         }
@@ -89,10 +110,13 @@ export class Calculator extends Component {
             break;
         }
       
-        this.setState({display: this.answer || "0"})
+        this.setState({display: this.formatter.format(this.answer) || "0"})
         this.setState({history: this.answer})
-        this.answer = ""
         this.array = [] 
+        this.answer = ""
+        this.numberCopy = ""
+       
+   
     }
 
       render() {
