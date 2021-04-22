@@ -1,5 +1,5 @@
 import './App.css';
-import Calculator from './components/Calculator'
+import Calculator from './components/Calculator2'
 
 function App() {
   return (
@@ -7,6 +7,7 @@ function App() {
       <section className="books">
         <Calculator /> 
       </section>
+    
     </div>
   );
 }

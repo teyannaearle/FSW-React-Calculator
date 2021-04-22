@@ -83,10 +83,13 @@ export class Calculator extends Component {
 
     calculate = () => {
 
+      if (this.array.length < 2){
+        this.setState({display: this.state.history})
+      }
 
-      if (this.array.length === 2){
+      else if (this.array.length === 2){
             this.array.push(Number(this.state.history))
-        }
+      
 
         let operator = this.array[1]
         switch (operator) {
@@ -116,7 +119,7 @@ export class Calculator extends Component {
         this.answer = ""
         this.numberCopy = ""
        
-   
+      }
     }
 
       render() {

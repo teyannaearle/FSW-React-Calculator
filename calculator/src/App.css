@@ -39,14 +39,27 @@ body {
 
 .books {
   margin: auto;
-  background-image: url(./book.png);
+  background-image: url(./book2.png);
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  background-size: 80% 90%;
+  /* background-size: 80% 90%; */
+  background-size: 65% 90%;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+@media screen and (max-width: 1000px) {
+  .books{
+    background-size: 72% 95%;
+  }
+}  
+
+@media screen and (max-width: 850px) {
+  .books{
+    background-size: 80% 100%;
+  }
+}  
