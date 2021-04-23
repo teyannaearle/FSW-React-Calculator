@@ -78,16 +78,20 @@ export class Calculator extends Component {
         // this.setState({displayCopy: this.displayCopy * -1})
         this.displayCopy = this.displayCopy * -1
         this.setState({display: this.formatter.format(this.displayCopy)})
-            // if (! this.state.waitingForInput){
-            //     this.setState({firstNum: this.displayCopy})
-            // } else {
-            //     this.setState({secondNum: this.displayCopy})
-            // }
-            if (this.state.secondNum){
-                this.setState({secondNum: this.displayCopy})
-            } else {
+            if (! this.state.waitingForInput){
                 this.setState({firstNum: this.displayCopy})
+            } else {
+                this.setState({secondNum: this.displayCopy})
             }
+            // if (this.state.secondNum){
+            //     this.setState({secondNum: this.displayCopy})
+            // } 
+
+            // else if (this.state.waitingForInput && !this.state.secondNum){
+            //     this.setState({secondNum: this.displayCopy})
+            // else {
+            //     this.setState({firstNum: this.displayCopy})
+            // }
         
         }
     }
@@ -101,6 +105,7 @@ export class Calculator extends Component {
         this.setState({secondNum: 0})  
         this.setState({calculated:false})
         this.setState({wipeScreen: false})
+        this.setState({waitingForInput:false})
         this.answer = ""
     }
 
@@ -116,7 +121,10 @@ export class Calculator extends Component {
 
         if (this.state.firstNum && this.state.secondNum){
             this.calculate()
+            this.setState({waitingForInput: true})
         } 
+
+        
         // else if (this.formatter.format(this.answer) === this.state.display){
         //     console.log("heyyy")
 
@@ -129,6 +137,8 @@ export class Calculator extends Component {
         const {firstNum, secondNum} = this.state
         const firstNumber = Number(firstNum)
         const secondNumber = Number(secondNum)
+
+       
 
         // this.setState({secondNum: this.displayCopy})      
        if (secondNum){ 
@@ -164,15 +174,20 @@ export class Calculator extends Component {
         this.displayCopy = this.answer
         // this.displayCopy = ""   
         this.setState({wipeScreen: true})
-       
+
+        // if (this.state.equalPressed){
+        //     this.setState({waitingForInput:false})
+
+        // } else {
+        //     this.setState({waitingForInput:true})
+        // }
     }
 
       }
 
       equalPressed = () => {
-          this.setState({equalPressed: true})
+          this.setState({equalPressed: true})   
       }
-    
 
       render() {
         return (
